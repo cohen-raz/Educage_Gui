@@ -18,7 +18,7 @@ The Educage_Gui main functionality:
 - 
 **Analysis:**  
 - Behavior rates (hit,miss,false alarm, correct rejection) with adjustable bin size slider - selecting multiple mice for automatically mean and standard deviation calculation  
-![image](https://user-images.githubusercontent.com/83977654/125957921-e97ddca0-c1c7-496c-bbda-b7d202a169b0.png)
+![image](https://user-images.githubusercontent.com/83977654/125960881-d1aff91a-27c1-4c51-bc90-9df2578fe94c.png)
 
 - [Sensitivity index](https://en.wikipedia.org/wiki/Sensitivity_index) - d'  
 ![image](https://user-images.githubusercontent.com/83977654/125957870-9278eab7-9b86-4f65-ab66-454f22db4084.png)
