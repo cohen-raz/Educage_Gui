@@ -14,8 +14,14 @@ The "Educage" is a unique automated training platform developed in [The NeuroPla
 The "Educage" allows efficient training of several mice simultaneously. Here, we used the system to train mice to discriminate among pure tones or complex sounds. For more inforamtion about the reaserch check the original paper: [Neural Correlates of Learning Pure Tones or Natural Sounds in the Auditory Cortex](https://www.frontiersin.org/articles/10.3389/fncir.2019.00082/full)
 
 The Educage_Gui main functionality:
+**Data Handling:**
+
 - Efficient data set construction from the "Educage" raw log files.
-- 
+- Loading automatically previous data sets for efficient Ongoing analysis
+- Easy export for data sets and figures.
+**Analysis:**
+
+-
 
 
 
