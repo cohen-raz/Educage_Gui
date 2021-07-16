@@ -1,6 +1,7 @@
 # Educage_Gui
 The "Educage_Gui" is a Python based GUI For Comprehensive Data Analysis & Visualization.
-Some of the Python libraries that were in extensive use: numpy, pandas, sklearn, matplotlib, PySimpleGUI.
+This software designed and implemented for efficient, yet accurate 'on the fly' data analysis.
+The following libraries were in extensive use in the implementeation: numpy, pandas, sklearn, matplotlib, PySimpleGUI.
 
 
 ![educage](https://user-images.githubusercontent.com/83977654/125738396-c04dadb0-f1c5-44ee-9a78-c24285c02706.png)
