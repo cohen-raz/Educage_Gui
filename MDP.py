@@ -104,28 +104,6 @@ class Mdp:
         # adjust index to point at the states after the previous state
         return next_index[score_tup_index] + k_order - 1
 
-    # def count_tup(self, score_tup, score_arr, next_index):
-    #     # revers tuple order if k_order>1
-    #     #
-    #     # if type(score_tup) == tuple:
-    #     #     prev_states = list(score_tup[::-1])
-    #     # else:
-    #     #     prev_states = [score_tup]
-    #
-    #     if type(score_tup) != tuple:
-    #         prev_states = [score_tup]
-    #     else:
-    #         prev_states = score_tup
-    #
-    #     logics_arr = []
-    #     for i, state in enumerate(score_tup):
-    #         currnet_next_index = next_index + i
-    #         logics_arr.append(score_arr[currnet_next_index] == state)
-    #
-    #     count_tup = np.ones(len(logics_arr[0]))
-    #     for i in range(len(logics_arr)):
-    #         count_tup = np.logical_and(count_tup, logics_arr[i])
-    #     return np.sum(count_tup)
 
     def get_percentage_k_dict(self, score_arr, next_states, next_index):
         transition_percentage_dict = {}
@@ -157,7 +135,6 @@ class Mdp:
                                                              score_tup,
                                                              k_order)
             prev_states_dist.append(len(next_index))
-            # self.test_k_order(next_index, score_arr, k_order, score_tup)
 
             row_dict = self.get_percentage_k_dict(score_arr, next_states,
                                                   next_index)
@@ -165,8 +142,7 @@ class Mdp:
             row_percentage_lst.append(current_row)
 
         mdp_mat = np.around(np.vstack(row_percentage_lst), 3)
-        # self.print_info(mdp_mat, prev_states, next_states, k_order,
-        #                 prev_states_dist)
+
 
         if order_by_certainty:
             return self._order_by_certainty(mdp_mat, prev_states_dist, labels)
@@ -225,12 +201,6 @@ class Mdp:
         prev_states_dist = prev_states_dist[high_certainty_ind].reshape(
             high_certainty_mat.shape[0], 1)
 
-        # add last col := sum of Hit and CR
-        # col_sum = (high_certainty_mat[:, 0] + high_certainty_mat[:,
-        #                                       3]).reshape(
-        #     high_certainty_mat.shape[0], 1)
-        # high_certainty_mat = np.append(high_certainty_mat, col_sum, axis=1)
-
         # add last col := prev state distribution
         high_certainty_mat = np.append(high_certainty_mat, prev_states_dist,
                                        axis=1)
@@ -244,6 +214,4 @@ class Mdp:
         # return top 20 rows
         return high_certainty_df.head(20)
 
-###################################################
 
-# test mdp  # def test_mdp(self, score_arr):  #     counter = SCORE_DICT.copy()  #     for k in counter.keys():  #         counter[k] = {0: {0: 0, 1: 0, 2: 0, 3: 0},  #                       1: {0: 0, 1: 0, 2: 0, 3: 0},  #                       2: {0: 0, 1: 0, 2: 0, 3: 0},  #                       3: {0: 0, 1: 0, 2: 0, 3: 0}}  #   #     for i in range(len(score_arr) - 2):  #         counter[score_arr[i + 2]][score_arr[i]][score_arr[i + 1]] += 1  #   #     cols = []  #     for k in sorted(list(counter.keys())):  #         parts_of_col = []  #         for i in sorted(list(counter[k].keys())):  #             parts_of_col.append(counter[k][i][0])  #             parts_of_col.append(counter[k][i][1])  #             parts_of_col.append(counter[k][i][2])  #             parts_of_col.append(counter[k][i][3])  #         current_col = np.array(parts_of_col)  #         s = np.sum(current_col)  #         cols.append(current_col / s)  #   #     return np.around(np.vstack(cols).T, 3)  # def get_prev_indx_by_score(self, score_arr, score, steps_back):  #     # ignore  first x (x=steps backs) trails in calculations  #     scores = score_arr[steps_back:]  #     indx = np.where(scores == score)  #     return indx[0]  #   # def get_percentage_dict(self, score_arr, prev_index):  #     """  #     :return: percentage column for given index (represents a 'next score' state)  #     """  #     prev_percentage_dict = SCORE_DICT.copy()  #     total_sum = 0  #     # count  #     for score in SCORE_DICT.keys():  #         prev_percentage_dict[score] = np.sum(  #             score_arr[prev_index] == score)  #         total_sum += prev_percentage_dict[score]  #   #     # calc percentage  #     for score in SCORE_DICT.keys():  #         prev_percentage_dict[score] = prev_percentage_dict[  #                                           score] / total_sum  #   #     return prev_percentage_dict  #   # def get_transition_mat(self, score_arr, steps_back=DEF_STEP_BACK):  #     prev_percentage_lst = []  #     for score in SCORE_DICT.keys():  #         prev_index = self.get_prev_indx_by_score(score_arr, score,  #                                                  steps_back)  #         prev_dict = self.get_percentage_dict(score_arr, prev_index)  #         current_col = np.array(list(prev_dict.values()))  #         prev_percentage_lst.append(current_col)  #   #     return np.vstack(prev_percentage_lst).T
