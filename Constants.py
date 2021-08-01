@@ -1,10 +1,9 @@
 # Default Path
-DATA_PATH = "C:\\Users\\razco\\Desktop\\lab\\MLProject\\EducageTable.csv"
-DEFAULT_DF_PCKL_PATH = "C:\\Users\\razco\\Desktop\\lab\\MLProject\\df.pkl"
+DATA_PATH = # **<write here the path for the log files>**
+DEFAULT_DF_PCKL_PATH = # **<write here the path for a df containing the data, saved as .pkl (not mandatory)>**
 DF_PICKL_EXTENSION = "df.pkl"
 PICKL_EXTENSION = ".pkl"
 DOWNLOAD_CSV_IMG_PATH = "C:\\Users\\razco\\PycharmProjects\\MLCage\\download_csv_img.png"
-# DOWNLOAD_CSV_IMG_PATH = "img\\download_csv_img.png"
 
 # Plot Related (Titles,Labels,Ranges,style)
 # Titles
@@ -23,7 +22,6 @@ TPR_ERR_BAR_LABEL = "Mean Hit rate"
 FP_ERR_BAR_LABEL = "Mean FA rate"
 FN_ERR_BAR_LABEL = "Mean Miss Rate"
 TNR_ERR_BAR_LABEL = "Mean CR Rate"
-# MOUSE_LVL_TITLE = "Data for mice:{0}\n, at levels:{1}"
 BOLD_MICE_TITLE = r"$\bf{Mice: }$"
 BOLD_LVL_TITLE = r"$\bf{Levels: }$"
 
@@ -36,7 +34,6 @@ MOUSE_LVL_TITLE_SHORT_2 = "{0}"
 STIM_HIST_LABEL = "StimId"
 PERCENTAGE = "%"
 NO_GO_HIST_TITLE = "NoGo stimuli analysis"
-# MOUSE_SCORE_PIE = "Score pie for mice:{0} at levels:{1}"
 MOUSE_SCORE_PIE = "Score pie:\n"
 PERCENTAGE_RANGE = [0, 1]
 DOT_lINE = '--'
@@ -56,7 +53,6 @@ MDP_Y = "previous state"
 MDP_X = "next state"
 SEQ_HIST_X = "sequence length"
 SEQ_HIST_Y = "%"
-# MDP_TITLE = "\nTransition probability between previous to next state"
 MDP_COLOR_BAR_LABEL = 'Transition probability'
 
 # Rate Coding
