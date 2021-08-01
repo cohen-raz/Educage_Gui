@@ -136,19 +136,6 @@ class Ploter:
         plt.vlines(lvl_bins, MIN_LVL_BIN, MAX_LVL_BIN, linestyles="dashed",
                    label="Level Bins", colors="PURPLE", linewidth=0.7)
 
-    # def tprPlot(self, mouseNumLst, lvlNumList, do_plot=True):
-    #     partialDf = self._getPartialData(mouseNumLst, lvlNumList,
-    #                                      self.getGoScoreLst())
-    #
-    #     timex = self.getTimecol(partialDf)
-    #     x = np.arange(len(timex))
-    #
-    #     y = self._getComulativeTPR(partialDf[SCORE])
-    #     if do_plot:
-    #         self.plotXY(x, y, TPR_LABEl)
-    #     else:
-    #         return y
-
     def tprPlot(self, mouseNumLst, lvlNumList, do_plot=True,
                 bin_size=DEFAULT_BIN_SIZE):
         partialDf = self._getPartialData(mouseNumLst, lvlNumList,
@@ -202,9 +189,6 @@ class Ploter:
         plt.errorbar(x, mean, label=label, yerr=std, fmt='--.', elinewidth=0.5,
                      errorevery=250, capsize=1)
 
-    # def rateMeanPlot(self, mouseNumLst, lvlNumList, rateKind):
-    #
-    #     self.rateMeanPlot2(mouseNumLst, lvlNumList, rateKind)
 
     def multiple_mice_rate_plot(self, rates_lst, selected_mouse_lst,
                                 selected_level_lst):
@@ -239,8 +223,6 @@ class Ploter:
             elif rate == MISS_GUI_LABEL:
                 label = FN_ERR_BAR_LABEL
                 partial_df = partial_go_df
-                # comulativeSumLst = self._fprMeanPlot(selected_mouse_lst,
-                #                                      temp_df_lst_no_go)
                 comulativeSumLst = self._fnrMeanPlot(selected_mouse_lst,
                                                      temp_df_lst_go)
 
@@ -335,16 +317,6 @@ class Ploter:
         tnrLst = self._getComulativeTnr(NoGoScoreLst)
         return [1 - tnr for tnr in tnrLst]
 
-    # def fnrPlot(self, mouseNumLst, lvlNumList):
-    #     partialDf = self._getPartialData(mouseNumLst, lvlNumList,
-    #                                      self.getGoScoreLst())
-    #
-    #     timex = self.getTimecol(partialDf)
-    #     x = np.arange(len(timex))
-    #
-    #     y = self._getComulativeFnr(partialDf[SCORE])
-    #     self.plotXY(x, y, FNR_LABEL)
-
     def fnrPlot(self, mouseNumLst, lvlNumList, bin_size=DEFAULT_BIN_SIZE):
         partialDf = self._getPartialData(mouseNumLst, lvlNumList,
                                          self.getGoScoreLst())
@@ -367,15 +339,6 @@ class Ploter:
             comulativTnr.append(self._calcTpr(tn, n))
         return comulativTnr
 
-    # def tnrPlot(self, mouseNumLst, lvlNumList):
-    #     partialDf = self._getPartialData(mouseNumLst, lvlNumList,
-    #                                      self.getNoGoScoreLst())
-    #
-    #     timex = self.getTimecol(partialDf)
-    #     x = np.arange(len(timex))
-    #
-    #     y = self._getComulativeTnr(partialDf[SCORE])
-    #     self.plotXY(x, y, TNR_LABEL)
 
     def tnrPlot(self, mouseNumLst, lvlNumList, bin_size=DEFAULT_BIN_SIZE):
         partialDf = self._getPartialData(mouseNumLst, lvlNumList,
@@ -386,18 +349,6 @@ class Ploter:
         x = np.arange(len(y))
         self.plotXY(x, y, TNR_LABEL)
 
-    # def fprPlot(self, mouseNumLst, lvlNumList, do_plot=True):
-    #     partialDf = self._getPartialData(mouseNumLst, lvlNumList,
-    #                                      self.getNoGoScoreLst())
-    #
-    #     timex = self.getTimecol(partialDf)
-    #     x = np.arange(len(timex))
-    #
-    #     y = self._getComulativeFpr(partialDf[SCORE])
-    #     if do_plot:
-    #         self.plotXY(x, y, FPR_LABEL)
-    #     else:
-    #         return y
 
     def fprPlot(self, mouseNumLst, lvlNumList, do_plot=True,
                 bin_size=DEFAULT_BIN_SIZE):
@@ -416,7 +367,6 @@ class Ploter:
         return self._df.loc[self._df[SCORE].isin(scoreLst)]
 
     def _geDataByStimId(self, stimID, data):
-        # tempDf = self._df.loc[self._df[SCORE].isin([FA_SCORE, CR_SCORE])]
         tempDf = data.loc[data[STIM_ID] == stimID]
         noGoLen = len(tempDf)
         return tempDf, noGoLen
@@ -519,31 +469,6 @@ class Ploter:
                  color=["blue", "red"], density=True,
                  label=["positive behaviour", "negative behaviour"])
 
-    # def behav_runs_hist(self, selected_mouse_lst, selected_level_lst):
-    #     pos_bahav_dict = Counter()
-    #     neg_bahav_dict =Counter()
-    #     for mouse in selected_mouse_lst:
-    #         partialDf = self._getPartialData([mouse], selected_level_lst,
-    #                                          use_score=False)
-    #         score_arr = (partialDf[SCORE]).to_numpy()
-    #
-    #         cur_pos_lst, cur_neg_lst = self._analysis.run_lengths_hist(
-    #             score_arr)
-    #         pos_bahav_dict += Counter(cur_pos_lst)
-    #         neg_bahav_dict += Counter(cur_neg_lst)
-    #     # calc mean
-    #     pos_bahav_dict = self._calc_mean_dict(pos_bahav_dict,
-    #                                           len(selected_mouse_lst))
-    #     neg_bahav_dict = self._calc_mean_dict(neg_bahav_dict,
-    #                                           len(selected_mouse_lst))
-    #     pos_to_hist = list(pos_bahav_dict.values())
-    #     neg_to_hist = list(neg_bahav_dict.values())
-    #     bin_max = max(np.max(pos_to_hist), np.max(neg_to_hist))
-    #     bins = np.arange(1, bin_max, 1)
-    #
-    #     plt.hist([pos_to_hist, neg_to_hist], bins=bins, alpha=0.5,
-    #         color=["blue", "red"], density=True,
-    #         label=["positive behaviour", "negative behaviour"])
 
     def plot_behav_analysis(self, selected_mouse_lst, selected_level_lst,
                             rolling_sum):
@@ -564,8 +489,6 @@ class Ploter:
 
         self._initPlot()
         plt.hist(prev_states_dist, label="test")
-        # self._ax.set_xticklabels(prev_states, rotation=45,
-        #                          rotation_mode="anchor", ha="right")
         plt.tight_layout()
 
     def plot_MDP_heat_map(self, selected_mouse_lst, selected_level_lst,
@@ -642,16 +565,8 @@ class Ploter:
                 self._ax.legend()
 
         if docked_window:
-            # f = plt.gcf()
-            # DPI = f.get_dpi()
             DPI = self._gcf.get_dpi()
-            # ------------------------------- you have to play with this size to reduce the movement error when the mouse hovers over the figure, it's close to canvas size
-
             self._gcf.set_size_inches(600 * 2 / float(DPI), 600 / float(DPI))
-            # self._fig.set_size_inches(420 * 2 / float(DPI), 420 / float(DPI))
-            # f.set_size_inches(380 * 2 / float(DPI), 380 / float(DPI))
-            # self._fig.set_size_inches(380 * 2 / float(DPI), 380 / float(DPI))
-
             self._draw_figure_w_toolbar(docked_window[FIG_KEY].TKCanvas,
                                         self._fig,
                                         docked_window[CONTROL_KEY].TKCanvas)
