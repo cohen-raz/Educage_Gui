@@ -1,8 +1,3 @@
-# import pandas as pd
-# import os
-# import numpy as np
-# import itertools
-
 from Preprocessor import *
 from DataMerge import *
 from Ploter import *
@@ -23,11 +18,9 @@ class Gui:
         self._runApp()
 
     def _get_mouse_lst(self):
-        # return self._pre.getUniqeList(MOUSE_NUM_COL_NAME)
         return self._pre.getUniqeList(MOUSE_ID)
 
     def _get_lvl_lst(self):
-        # return self._pre.getUniqeList(LEVEL)
         return self._pre.getUniqeList(LEVEL_NAME)
 
     def _change_gui_element_visibility(self, key_lst, disable):
@@ -56,22 +49,6 @@ class Gui:
 
         self._window.refresh()
 
-    # def _multiple_mouse_plot(self, rates_lst, selected_mouse_lst,
-    #                          selected_level_lst):
-    #
-    #     for rate in rates_lst:
-    #         if rate == HIT_GUI_LABEL:
-    #             self._plt.rateMeanPlot(selected_mouse_lst, selected_level_lst,
-    #                                    TPR)
-    #         elif rate == MISS_GUI_LABEL:
-    #             self._plt.rateMeanPlot(selected_mouse_lst, selected_level_lst,
-    #                                    FPR)
-    #         elif rate == FA_GUI_LABEL:
-    #             self._plt.rateMeanPlot(selected_mouse_lst, selected_level_lst,
-    #                                    FNR)
-    #         elif rate == CR_GUI_LABEL:
-    #             self._plt.rateMeanPlot(selected_mouse_lst, selected_level_lst,
-    #                                    TNR)
     def _get_lvl_df_kind(self, no_go_df_in_use, go_df_in_use):
         if no_go_df_in_use and go_df_in_use:
             return self._plt.getAllScoreLst()
@@ -86,9 +63,6 @@ class Gui:
         if len(selected_mouse_lst) > MIN_MOUSE_LEN_FOR_MEAN:
             self._plt.multiple_mice_rate_plot(rates_lst, selected_mouse_lst,
                                               selected_level_lst)
-
-        # self._multiple_mouse_plot(rates_lst, selected_mouse_lst,
-        # selected_level_lst)
 
         # one mouse for ploting
         else:
@@ -146,10 +120,7 @@ class Gui:
             self._update_gui_lists()
             self._reset_all_ckbox()
 
-
         except Exception as e:
-            # err_msg="{0}:{1}".format(type(e),e)
-            # er="{0}".format(e)
             self._update_status_bar(e, "red")
 
     def _handle_set_default(self):
@@ -263,13 +234,6 @@ class Gui:
                                         select_mode=sg.LISTBOX_SELECT_MODE_MULTIPLE,
                                         key=LEVEL_SELECT_KEY)]
 
-        # mouse_lvl_lsts_sg = [, ]
-        #
-        # level_lst_sg = [sg.T(SELECT_LEVEL_LABEL),
-        #                 sg.Listbox(values=level_lst, size=(14, 10),
-        #                            enable_events=True, bind_return_key=True,
-        #                            select_mode=sg.LISTBOX_SELECT_MODE_MULTIPLE,
-        #                            key=LEVEL_SELECT_KEY)]
         status_section_sg = [sg.T(STATUS_BAR_TEXT),
                              sg.StatusBar(status_bar_msg_color[0],
                                           key=STATUS_BAR_KEY,
@@ -288,11 +252,7 @@ class Gui:
                                           border_width=0, image_subsample=2,
                                           tooltip=DOWNLOAD_TO_CSV_TOOLTIP,
                                           key=DOWNLOAD_TO_CSV_KEY)]
-        # pkl_path_section_sg = [sg.Text(ENTER_PKL_PATH),
-        #                        sg.In(size=(25, 1), enable_events=True,
-        #                              key=PKL_PATH_KEY), sg.FolderBrowse(), ]
-        # sg.FileBrowse(file_types=((FILE_TYPE_LABEL, FILE_TYPE_VALUE),))
-        # sg.FolderBrowse(enable_events=True)
+
         d_prime_cbox_sg = [
             sg.Checkbox(D_PRIME_SELECTION_LABEL, enable_events=True,
                         default='0', key=D_PRIME_CBOX_KEY), ]
@@ -326,9 +286,6 @@ class Gui:
                                        size=(5, 20), default_value=500,
                                        key=BIN_SIZE_KEY, enable_events=True)]
         control_section_sg = [sg.Canvas(key=CONTROL_KEY)]
-        #
-        # data_column = [status_section_sg, data_path_section_sg, mouse_lst_sg,
-        #                level_lst_sg, ]
 
         data_column = [status_section_sg, data_path_section_sg,
                        selectionT_lst_sg, [
@@ -426,11 +383,6 @@ class Gui:
                                       self._get_plot_tile(selected_mouse_lst,
                                                           selected_level_lst),
                                       setYRange=PERCENTAGE_RANGE)
-                    # self._plt.setPlot(TRIALS_LABEL, PERCENTAGE,
-                    #                   MOUSE_LVL_TITLE.format(
-                    #                       selected_mouse_lst,
-                    #                       selected_level_lst),
-                    #                   setYRange=PERCENTAGE_RANGE)
                     self._window.refresh()
                     self._select_rate_plot(is_rate_plot, selected_mouse_lst,
                                            selected_level_lst,
@@ -473,14 +425,9 @@ class Gui:
                                                 k_order=k_order, range=None,
                                                 do_animation=False,
                                                 order_by_certainty=is_order_by)
-                    # train vector range = (6164,7978)
                     self._plt.showPlot(self._window, show_legend=False)
 
                 elif is_seq_hist:
-
-                    # self._plt.states_hist(selected_mouse_lst,selected_level_lst,k_order)
-                    # self._plt.showPlot(self._window, show_legend=False)
-
                     self._plt.setPlot(SEQ_HIST_X, SEQ_HIST_Y,
                                       self._get_plot_tile(selected_mouse_lst,
                                                           selected_level_lst, ))
