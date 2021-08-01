@@ -110,14 +110,6 @@ class DataMerge:
 
         return dir_dict
 
-    # def _df_lst_to_df(self, all_mice_df_lst):
-    #     # complete_df = all_mice_df_lst[0]
-    #     # for df_idx in range(1, len(all_mice_df_lst)):
-    #     #     complete_df = complete_df.append(all_mice_df_lst[df_idx],
-    #     #                                      ignore_index=True)
-    #     # return complete_df
-    #     return pd.concat(all_mice_df_lst)
-
     def _df_lst_to_df(self, all_mice_df_lst):
         if not all_mice_df_lst:
             raise Exception(ERR_NO_DATA)
