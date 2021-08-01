@@ -2,23 +2,6 @@ import pandas as pd
 from Constants import *
 import os
 
-
-# # Paths
-# DATA_PATH = "C:\\Users\\razco\\Desktop\\lab\\MLProject\\EducageTable.csv"
-# DF_PCKL_PATH = "C:\\Users\\razco\\Desktop\\lab\\MLProject\\df.pkl"
-#
-# # Error Messages
-# ERR_PICKLE_OVERRIDE = "Warning: changes override existing pickle"
-#
-# # Columns names
-# MOUSE_NUM_COL_NAME = "mouse_num"
-# MOUSE_ID = "mouse_name"
-# LEVEL = "level"
-# SCORE = "score"
-# FREQ = "freq_played"
-# TIME = "time"
-
-
 class Preprocessor:
     def __init__(self, dataPath=None):
         if dataPath:
@@ -46,8 +29,7 @@ class Preprocessor:
         # look for .pkl file in current working directory
         files = os.listdir(os.getcwd())
         for fname in files:
-            # if fname.endswith(PICKL_EXTENSION):
-            if fname.endswith('EducageTable.pkl'):
+            if fname.endswith(PICKL_EXTENSION):
                 return fname
         return False
 
@@ -86,21 +68,12 @@ class Preprocessor:
     def removeCol(self, colName):
         del self._df[colName]
 
-    # def saveCahngesToPickle(self, path):
-    #     if path == PICKEL_PATH:
-    #         print(ERR_PICKLE_OVERRIDE)
-    #
-    #     self._cleanDF.to_pickle(path)
-
     def basicClean(self):
         if not self._cleanDF:
             self._cleanDF = self._df[
                 [MOUSE_NUM_COL_NAME, MOUSE_ID, LEVEL, SCORE, FREQ, TIME]]
         return self._cleanDF
 
-    def shrinkData(self):
-        # combine similar data point to one - time diff of 1 min, and same score
-        pass
 
     def toDateTime(self):
         self._df[TIME] = pd.to_datetime(self._df[TIME])
@@ -114,7 +87,4 @@ class Preprocessor:
             self._df = df
         return df
 
-# at the first run:  # pre = Preprocessor(DATA_PATH)
 
-# save clean data
-# cleanDF = pre.basicClean()
