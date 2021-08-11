@@ -15,7 +15,7 @@ The Educage_Gui main functionality:
 **Data Handling:**  
 - Efficient data set construction from the "Educage" raw log files.  
 - Loading automatically previous data sets for efficient Ongoing analysis  
-- Easy export for data sets and figures.  
+- Export data sets and figures.  
 
   
 **Analysis:**  
