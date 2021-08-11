@@ -1,9 +1,9 @@
 # Default Path
-DATA_PATH = # **<write here the path for the log files>**
-DEFAULT_DF_PCKL_PATH = # **<write here the path for a df containing the data, saved as .pkl (not mandatory)>**
+DATA_PATH = ''# **<write here the path for the log files>**
+DEFAULT_DF_PCKL_PATH = ''# **<write here the path for a df containing the data, saved as .pkl (not mandatory)>**
 DF_PICKL_EXTENSION = "df.pkl"
 PICKL_EXTENSION = ".pkl"
-DOWNLOAD_CSV_IMG_PATH = "C:\\Users\\razco\\PycharmProjects\\MLCage\\download_csv_img.png"
+DOWNLOAD_CSV_IMG_PATH = ".\download_csv_img.png"
 
 # Plot Related (Titles,Labels,Ranges,style)
 # Titles
