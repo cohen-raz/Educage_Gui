@@ -19,9 +19,9 @@ The Educage_Gui main functionality:
 
   
 **Analysis:**  
-- Behavior rates (hit,miss,false alarm, correct rejection) with adjustable bin size slider - selecting multiple mice for automatically mean and standard deviation calculation  
+- Behavior rates (hit, miss, false alarm, correct rejection) with adjustable bin size slider - selecting multiple mice for automatically mean and standard deviation calculation  
 ![image](https://user-images.githubusercontent.com/83977654/125960881-d1aff91a-27c1-4c51-bc90-9df2578fe94c.png)  
-- 2D Behavior analysis -investigate positive / negative sequences  
+- 2D Behavior analysis - investigate positive / negative sequences  
 ![image](https://user-images.githubusercontent.com/83977654/125958545-2e837b1d-329e-4010-a909-11b64dac1c46.png)
 - Positive / Negative sequences histogram  
 ![image](https://user-images.githubusercontent.com/83977654/125959767-d2dac492-478d-44af-9bbb-d60a61e971f6.png)  
