@@ -231,11 +231,7 @@ class Analysis:
         if df is None:
             df = self._df
         score_arr = (df[SCORE]).to_numpy()
-        mask_go = (score_arr == HIT_SCROE) | (score_arr == CR_SCORE)
-
-        # self.plot_rand_cosin_from_score(score_arr)
-        # self.p()
-
+        mask_go = (score_arr == HIT_SCROE) | (score_arr == CR_SCORE)   
         run_values, run_starts, run_lengths = self.find_runs(mask_go)
 
         # turn FA,Miss points to negative points
@@ -264,10 +260,7 @@ class Analysis:
 
 
         y = run_lengths
-        # x = np.arange(0, len(run_lengths))
         x = np.cumsum(y)
-
-        # plot_lst.append((new_peaks, y[new_peaks], PERCENTILE_LABEL, 'o', None))
         pos_run_lengths = run_lengths.copy()
         neg_run_lengths = run_lengths.copy()
         pos_run_lengths[pos_run_lengths <= 0] = 0
