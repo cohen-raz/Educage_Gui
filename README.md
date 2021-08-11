@@ -34,4 +34,4 @@ The Educage_Gui main functionality:
 -Behavior pie  
 ![image](https://user-images.githubusercontent.com/83977654/125958120-f34e1783-ecb1-4ebe-8987-673133ac09d8.png)
 
-
+ 
